@@ -28,7 +28,7 @@ public struct ImageSet: ContentType {
             .appendingExtension(fileExtension)
         try folder.createDirectory(withIntermediateDirectories: true)
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         let json = try encoder.encode(self)
         try json.write(to: folder.url.appendingPathComponent("Contents").appendingPathExtension("json"))
 

@@ -33,7 +33,7 @@ public extension ContentType {
         try folder.createDirectory(withIntermediateDirectories: true)
         let encoder = JSONEncoder()
         let json = try encoder.encode(self)
-        encoder.outputFormatting = .prettyPrinted
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
         try json.write(to: folder.url.appendingPathComponent("Contents").appendingPathExtension("json"))
         
         for child in children {
