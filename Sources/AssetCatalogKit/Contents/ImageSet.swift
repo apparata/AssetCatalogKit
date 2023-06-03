@@ -34,7 +34,13 @@ public struct ImageSet: ContentType {
 
         for image in images {
             let imagePath = folder.appendingComponent(image.filename)
-            try image.data.write(to: imagePath.url)
+            switch image.data {
+            case .data(let data):
+                try data.write(to: imagePath.url)
+            case .url(let url):
+                let data = try Data(contentsOf: url)
+                try data.write(to: imagePath.url)
+            }
         }
     }
 }

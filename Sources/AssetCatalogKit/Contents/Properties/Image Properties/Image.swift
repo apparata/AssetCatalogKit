@@ -45,10 +45,10 @@ public struct Image: Encodable {
     /// The insets for alignmentRectInsets in UIImage or for alignmentRect in NSImage.
     public var alignmentInsets: ImageAlignmentInsets? = nil
     
-    let data: Data
+    let data: AssetData
     
     public init(filename: String,
-                data: Data,
+                data: AssetData,
                 idiom: Idiom = .universal,
                 colorSpace: ColorSpace? = nil,
                 compressionType: ImageCompressionType? = nil,
